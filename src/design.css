@@ -1,0 +1,93 @@
+/*
+For Home Page:
+*/
+
+.overall {
+    min-height: 100vh;
+    background: #2774AE;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F2A900;
+    margin-bottom: 8px;
+}
+
+.search-bar {
+    width: 75%; /* 75% of searchbar-and-signin container*/
+}
+
+.sign-in-button {
+    margin-right: 32px;
+}
+
+.search-input {
+    width: 65%;
+    font-size: 16px;
+    border: 2px solid #F2A900;
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.sign-in-text {
+    background-color: #2D68C4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+.logo {
+    color: #2D68C4;
+    font-family: 'Copperplate', fantasy;
+    font-size: 48px;
+    padding: 16px;
+}
+
+.image-group {
+    padding: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant1 {
+    width: auto;
+    height: auto;
+    max-height: 500px;
+    position: fixed;
+    bottom: 0;
+    padding: 48px;
+}
+
+/*
+For Search Bar Components:
+*/
+
+/*
+CSS for each search result
+*/
+.one-search-result {
+    padding: 10px 20px;
+}
+
+.one-search-result:hover {
+    background-color: #add8e6;
+}
+
+/*
+CSS for search result list
+*/
+.all-results {
+    box-shadow: 0px 0px 12px #808080;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow-y: auto;
+    max-height: 265px;
+}
