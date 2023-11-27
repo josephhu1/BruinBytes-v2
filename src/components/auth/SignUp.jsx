@@ -3,7 +3,6 @@ import React, { useState}  from "react";
 import { auth } from "../../firebase";
 import { Form, Button, Card } from 'react-bootstrap'
 
-// girl video
 const SignUp  = () => {
     const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
@@ -22,7 +21,7 @@ const SignUp  = () => {
     return (
         <div className="sign-in-container">
             <form onSubmit={signUp}>
-                <h1>Create Account</h1>
+                <h1>Sign Up</h1>
                 <input 
                     type="email" 
                     placeholder="Enter your email"

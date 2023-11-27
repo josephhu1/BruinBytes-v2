@@ -24,7 +24,9 @@ For Home Page:
 .sign-in-button {
     margin-right: 32px;
 }
-
+.sign-up-button {
+    margin-right: 32px;
+}
 .search-input {
     width: 65%;
     font-size: 16px;
@@ -42,7 +44,15 @@ For Home Page:
     padding: 10px 20px;
     white-space: nowrap;
 }
-
+.sign-up-text {
+    background-color: #2D68C4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
 .logo {
     color: #2D68C4;
     font-family: 'Copperplate', fantasy;

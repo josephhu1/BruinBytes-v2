@@ -2,18 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../design.css';
 
-const SignInButton = ({ history }) => {
+const SignUpButton = ({ history }) => {
     const navigate = useNavigate();
     const handleSignInClick = () => {
-        navigate('/SignIn');
+        navigate('/SignUp');
     };
     return (
-        <div className="sign-in-button">
-            <button className="sign-in-text" onClick={handleSignInClick}>
-                Sign In
+        <div className="sign-up-button">
+            <button className="sign-up-text" onClick={handleSignInClick}>
+                Sign Up
                 </button>
         </div>
     );
 };
 
-export default SignInButton;
+export default SignUpButton;
