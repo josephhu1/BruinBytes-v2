@@ -1,6 +1,5 @@
 
 
-
 .App {
     font-family : sans-serif;
     text-align:  center;
@@ -11,15 +10,6 @@ body {
     background-color: rgb(45, 108, 203);
 }
 
-/* .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-
-} */
 
 .content {
     position: center;
@@ -36,11 +26,6 @@ body {
     align-items: center;
 }
 
-/* .product {
-    display: flex;
-    align-items: center;
-
-} */
 
 .product h1{
     font-size: 20px;
@@ -48,46 +33,13 @@ body {
 }
 
 
-textname{
-    position: absolute;
-    width: 40%;
-    border-radius: 10px;
-    padding: 50px;
-    
-    /* border-radius: 6px; */
-}
-
 textarea{
     position: center; 
     width: 80%;
     border-radius: 10px;
     padding: 50px;
     
-    /* border-radius: 6px; */
-}
-
-
-
-
-button{
-
-    background: orange;
-    color: #fff;
-    width: 50%;
-    border-radius: 6px;
-    padding: 10px 0;
-    border: none;
-    font-weight: bolder;
-    cursor: pointer;
-
-}
-
-button.disabled{
-
-    opacity: .5;
-    pointer-events: none;
-
-
+    
 }
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../design.css';
+import '../pages/design.css';
 
 const SignInButton = () => {
     return (

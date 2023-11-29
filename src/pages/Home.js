@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import SearchBar from './components/SearchBar';
-import SignInButton from './components/SignInButton';
-import SearchOutput from './components/SearchOutput';
+import SearchBar from '../components/SearchBar';
+import SignInButton from '../components/SignInButton';
+import SearchOutput from '../components/SearchOutput';
+import './design.css';
 
-const App = () => {
+const Home = () => {
     const [results, setResults] = useState([]);
     return (
         <div className="overall">
@@ -20,4 +21,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Home;

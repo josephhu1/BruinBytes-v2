@@ -22,7 +22,8 @@ For Home Page:
 }
 
 .sign-in-button {
-    margin-right: 32px;
+    /* margin-right: 32px; */
+    padding: 16px;
 }
 
 .search-input {

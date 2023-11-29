@@ -1,5 +1,5 @@
 import React from "react";
-import "../design.css";
+import "../pages/design.css";
 
 /*
 List of search results
