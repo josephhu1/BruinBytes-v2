@@ -1,5 +1,7 @@
 import React from "react";
-import "../design.css";
+import "../pages/design.css";
+
+import { useNavigate } from 'react-router-dom';
 
 /*
 List of search results
@@ -16,8 +18,10 @@ export const SearchOutput = ({results}) => {
 For each search result
 */
 const SomeResult = ({result}) => {
+    const navigate = useNavigate();
     const handleClick = () => {
-        alert(`Need to implement page for: ${result.name}`);
+        navigate(`/reviews/${result.name.replace(/\s/g, '')}`);
+        /* alert(`Need to implement page for: ${result.name}`); */
     };
 
     return (

@@ -22,10 +22,11 @@ For Home Page:
 }
 
 .sign-in-button {
-    margin-right: 32px;
+    margin-right: 16px;
+    /* padding: 16px; */ 
 }
 .sign-up-button {
-    margin-right: 32px;
+    margin-right: 16px;
 }
 .search-input {
     width: 65%;
@@ -100,4 +101,17 @@ CSS for search result list
     border-radius: 12px;
     overflow-y: auto;
     max-height: 265px;
+}
+
+.spin-the-wheel-button {
+    margin-right: 16px;
+}
+.spin-the-wheel-text {
+    background-color: #AA336A;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    white-space: nowrap;
 }

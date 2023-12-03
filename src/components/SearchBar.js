@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../design.css';
+import '../pages/design.css';
 
 /*
 Search Bar Functionality:
