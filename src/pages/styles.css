@@ -5,11 +5,11 @@
     text-align:  center;
 }
 
-
+/*
 body {
     background-color: rgb(45, 108, 203);
 }
-
+*/
 
 .content {
     position: center;
@@ -32,7 +32,7 @@ body {
 
 }
 
-
+/*
 textarea{
     position: center; 
     width: 80%;
@@ -41,7 +41,7 @@ textarea{
     
     
 }
-
+*/
 
 .restaurant-container {
     display: flex;

@@ -76,6 +76,53 @@ app.get('/api/read', (req, res) => {
     })();
 });
 
+//Read - Get (All Restaurant Names ONLY)
+app.get('/api/names', (req, res) => {
+    (async () => {
+        try {
+            let query = db.collection('dining-halls');
+            let response = [];
+            const querySnapshot = await query.get(); // Use `await` directly on the query
+            const docs = querySnapshot.docs;
+
+            for (let doc of docs) {
+                response.push(doc.data().name);
+            }
+            res.status(200).send(response); // Send response outside of the loop
+        } catch (error) {
+            console.log(error);
+            res.status(500).send(error);
+        }
+    })();
+});
+
+//Read - Get (All Restaurants)
+app.get('/api/read', (req, res) => {
+    (async () => {
+        try {
+            let query = db.collection('dining-halls');
+            let response = [];
+            const querySnapshot = await query.get(); // Use `await` directly on the query
+            const docs = querySnapshot.docs;
+
+            for (let doc of docs) {
+                const selectedItem = {
+                    id: doc.id,
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    address: doc.data().address,
+                    avg_rating: doc.data().avg_rating
+                };
+                response.push(selectedItem);
+            }
+            res.status(200).send(response); // Send response outside of the loop
+        } catch (error) {
+            console.log(error);
+            res.status(500).send(error);
+        }
+    })();
+});
+
 //Update - Put
 app.put('/api/update/:id', (req, res) => {
     (async () => {

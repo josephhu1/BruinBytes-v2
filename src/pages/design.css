@@ -115,3 +115,15 @@ CSS for search result list
     padding: 10px 20px;
     white-space: nowrap;
 }
+
+.wheel-overall {
+    display: flex;
+    justify-content: center;
+    background: #85AAAA;
+    min-height: 100vh;
+}
+
+.wheel-text {
+    color: #FFFFFF;
+    font-family: "Copperplate";
+}
