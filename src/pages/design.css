@@ -156,11 +156,13 @@ CSS for search result list
     transition: background-color 100ms ease-in-out;
 }
 
-.img-slider-btn:hover {
+.img-slider-btn:hover,
+.img-slider-btn:focus-visible{
     background-color: rgb(0, 0, 0, 0.2);
 }
 
-.img-slider-btn:hover > * {
+.img-slider-btn:hover > * 
+{
     animation: squish 200ms ease-in-out;
 }
 
@@ -204,7 +206,7 @@ CSS for search result list
     /* Add more specific styles for paragraph content */
 }
 
-.img-slider-bot-btn{
+.img-slider-dot-btn{
     all: unset;
     display: block;
     cursor: pointer;
@@ -213,8 +215,9 @@ CSS for search result list
     transition: scale 100ms ease-in-out;
 }
 
-.img-slider-btn:hover {
-    scale: 1;
+.img-slider-dot-btn:hover,
+.img-slider-dot-btn:focus-visible{
+    scale: 1.25;
 }
 
 .custom-circle-dot-class {
@@ -230,3 +233,8 @@ CSS for search result list
     height: 100%;
     width: 100%;
   }
+
+.img-slider-dot-btn:focus-visible,
+.img-slider-btn:focus-visible {
+    outline: auto;
+}

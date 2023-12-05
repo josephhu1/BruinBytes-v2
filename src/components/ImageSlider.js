@@ -60,9 +60,9 @@ export function ImageSlider({ imageUrls}) {
                     <h3>{restaurantInfo.name}</h3>
                     {/* Display other restaurant information here */}
                     <p>{restaurantInfo.description}</p>
-                    <p>{restaurantInfo.address}</p>
+                    <p>Location: {restaurantInfo.address}</p>
                     {/* Add more details as needed */}
-                </div>
+                </div>  
             )}
         <button onClick={showPrevImage} className="img-slider-btn" style={{ left: 0 }}> 
             <ArrowBigLeft/> 
@@ -81,7 +81,7 @@ export function ImageSlider({ imageUrls}) {
         {imageUrls.map((_, index) => (
             <button 
                 key={index} 
-                className="img-slider-bot-btn" 
+                className="img-slider-dot-btn" 
                 onClick={() => setImageIndex(index)}
             >
                 {index === imageIndex ? <CircleDot className="custom-circle-dot-class"/> : <Circle className="custom-circle-class" />}
