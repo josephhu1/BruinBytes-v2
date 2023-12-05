@@ -6,7 +6,6 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 
 import SpinTheWheel from './pages/SpinTheWheel';
-
 function App() {
   return (
     <Router>
