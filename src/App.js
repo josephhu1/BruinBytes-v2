@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Review from './pages/Review';
-
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 
@@ -21,5 +20,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
