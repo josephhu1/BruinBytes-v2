@@ -21,12 +21,15 @@ const AuthDetails = () => {
 
     const userSignOut = () => {
         signOut(auth).then(() => {
-            console.log('sign out successful')
-        }).catch(error => console.log(error))
-    }
-    return <div>
-        {authUser ? <><p>{`Signed In as ${authUser.email}`}</p><button onClick={userSignOut}>Sign Out</button></> : <p>Signed Out</p>}
+            console.log("sign out successful");
+        }).catch((error) => console.log(error));
+    };
+    return (
+        <div>
+            {authUser ? <><p>{`Signed In as ${authUser.email}`}</p>
+            <button onClick={userSignOut}>Sign Out</button></> : <p>Signed Out</p>}
         </div>
+    );
 };
 
 export default AuthDetails;
