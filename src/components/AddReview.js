@@ -44,13 +44,17 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
     };
 
 
-
+                
 
       return (
         <div className="container-fluid">
+                
           <div className="row justify-content-center align-items-center">
+
+                
             <div className="col-md-1">
               <form>
+              
                 <div className="form-row align-items-center justify-content-center">
                 <div className="form-group col-md-6 d-flex flex-column align-items-center">
                     <label
@@ -77,7 +81,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     onChange={(e) => setRating(e.target.value)}
                     id="rating"
                     className="custom-select"
-                    style={{ marginBottom: '20px' }}
+                    style={{ marginBottom: '20px' , backgroundColor: '#f5f5f5', border: '1px solid #ccc', borderRadius: '5px', padding: '8px', fontSize: '16px',minWidth: '150px' }}
                     >
                     <option disabled>Rating</option>
                     <option value="1">1</option>
@@ -103,25 +107,32 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     ></textarea>
                 </div>
-                <div className="form-group col-md-6 d-flex justify-content-center align-items-center mt-3">
-                    <button
+              <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
+                <div
+                  className="d-flex flex-column align-items-center"
+                  style={{ marginBottom: '20px' }}
+                >
+                  <button
                     type="submit"
                     onClick={submitReview}
                     className="btn btn-primary"
-                    style={{ marginBottom: '20px' }}
-                    >
+                    style={{ marginBottom: '30px' }}
+                  >
                     Submit
-                    </button>
+                  </button>
+                  <img
+                    src="/logo.jpg"
+                    alt="L"
+                    style={{ minWidth: '150px', height: 'auto', width: '30%' }}
+                  />
                 </div>
-                </div>
-              </form>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
-      );
-      
-
-
-}
+      </div>
+    </div>
+  );
+};
 
 export default AddReview
