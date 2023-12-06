@@ -48,6 +48,11 @@ textarea{
     display: flex;
     flex-direction: column;
   }
+
+  .signup-link {
+    margin-top: 50px; /* Adjust the value as needed */
+}
+
   
   @media screen and (min-width: 600px) {
     .auth-form-container {

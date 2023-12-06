@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-/* import '../design.css'; */
+import {AuthContext } from './AuthContext';
 import '../pages/styles.css';
 
 const SignInButton = ({ history }) => {
+    const { currentUser, userSignOut} = useContext(AuthContext);
     const navigate = useNavigate();
+
     const handleSignInClick = () => {
         navigate('/SignIn');
     };
     return (
         <div className="sign-in-button">
+            {currentUser ? (
+                <>
+                    <span className="sign-up-text">Hi,{currentUser.email}!</span>
+                    <button onClick={userSignOut}>Sign Out</button>
+                    </>
+            ) : (
             <button className="sign-in-text" onClick={handleSignInClick}>
                 Sign In
                 </button>
+                 )}
         </div>
     );
 };

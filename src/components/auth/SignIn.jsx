@@ -2,6 +2,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignIn = () => {
@@ -13,14 +15,19 @@ const SignIn = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                console.log(userCredential);
-                navigate("/");
+                toast.success("Success! Redirecting to homepage...");
+                setTimeout(() => navigate("/"), 2000);
+                //console.log(userCredential);
+                //navigate("/");
             })
             .catch((error) => {
-                console.log(error);
+                toast.error("Login failed. Please try again.");
+                //console.log(error);
             });
     };
-
+    const navigateToSignUp = () => {
+        navigate('/SignUp');
+    }
     return (
         <div className="LoginPage">
             <div className="auth-form-container">
@@ -42,6 +49,9 @@ const SignIn = () => {
                     ></input>
                     <button type="submit">Log In</button>
                 </form>
+                <button onClick={navigateToSignUp} className="signup-link">
+                    Don't Have an Account? Create one!
+                </button>
             </div>
 
         </div>

@@ -29,7 +29,6 @@ const Home = () => {
                 <SearchBar setResults={setResults} />
                 <SpinTheWheel />
                 <SignInButton />
-                <SignUpButton />
             </div>
             <SearchOutput results={results} />
             <div style= {{ 
