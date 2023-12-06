@@ -159,34 +159,34 @@ app.delete('/api/delete/:id', (req, res) => {
 
 //Create - Post Restaurant Reviews for a Restaurant
 //:id refers to a restaurant's id
-app.post('/api/create/review/:id', (req, res) => {
-    (async () => {
-        try{
-            // Get the dining hall information (you can put this logic in a separate function for better code organization)
-            const diningHallDoc = db.collection('dining-halls').doc(req.params.id);
-            const diningHall = await diningHallDoc.get();
-            const diningHallData = diningHall.data();
-            await db.collection('dining-reviews').doc('/' + req.body.id + '/')
-            .create({
-                restaurantID: diningHallDoc.id,
-                restaurantName: diningHallData.name,
-                username: req.body.username,
-                rating: req.body.rating,
-                review: req.body.review
-            })
+app.post('/api/create/review/:id', async (req, res) => {
+    try {
+        const diningHallDoc = db.collection('dining-halls').doc(req.params.id);
+        const diningHall = await diningHallDoc.get();
+        const diningHallData = diningHall.data();
 
-            if (diningHallData) {
-                const restaurantName = diningHallData.name; // Replace 'name' with the actual field name
-                return res.status(201).json({ message: `Review created for ${restaurantName}.` });
-            } else {
-                return res.status(404).json({ error: 'Dining hall not found' });
-            }
-        }catch(error){
-            console.log(error)
-            return res.status(500).send(error)
+        if (!diningHallData) {
+            return res.status(404).json({ error: 'Dining hall not found' });
         }
-    })()
-})
+
+        const newReview = {
+            restaurantID: diningHallDoc.id,
+            restaurantName: diningHallData.name,
+            username: req.body.username,
+            rating: req.body.rating,
+            review: req.body.review
+        };
+
+        const reviewRef = db.collection('dining-reviews');
+        await reviewRef.add(newReview);
+
+        return res.status(201).json({ message: `Review created for ${diningHallData.name}.` });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
 
 //Search Restaurant name
 app.get('/api/search', (req, res) => {
@@ -211,6 +211,119 @@ app.get('/api/search', (req, res) => {
         }
     })();
 });
+
+//Create - Post Restaurant Reviews for a Restaurant
+//:id refers to a restaurant's id
+app.post('/api/create/review/:id', cors(), async (req, res) => {
+    try {
+        // Get the dining hall information of the review
+        const diningHallDoc = db.collection('dining-halls').doc(req.params.id);
+        const diningHall = await diningHallDoc.get();
+        const diningHallData = diningHall.data();
+
+        console.log(diningHall) 
+
+        const reviewDocRef = await db.collection('dining-reviews').add({
+            restaurantID: diningHallDoc.id,
+            username: req.body.username,
+            rating: req.body.rating,
+            review: req.body.review
+        });
+
+        if (diningHallData) {
+            const restaurantID = diningHallData.id; 
+            return res.status(201).json({ message: `Review created for ${restaurantID}.`, reviewId: reviewDocRef.id });
+        } else {
+            return res.status(404).json({ error: 'Dining hall not found' });
+        }
+    } catch(error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+
+//get the reviews associated with a particular restaurantID
+app.get('/api/read/reviews/:restaurantID', async (req, res) => {
+    try {
+        const restaurantID = req.params.restaurantID;
+
+        // Fetch reviews based on the provided restaurantID
+        const reviewsSnapshot = await db.collection('dining-reviews')
+            .where('restaurantID', '==', restaurantID)
+            .get();
+
+        if (reviewsSnapshot.empty) {
+            return res.status(404).json({ error: 'No reviews found for this restaurant.' });
+        }
+
+        const reviews = [];
+        reviewsSnapshot.forEach(doc => {
+            reviews.push(doc.data());
+        });
+
+        return res.status(200).json(reviews);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send(error);
+    }
+});
+
+
+// Get average rating of a restaurant
+app.get('/api/read/rating/:restaurantID', async (req, res) => {
+    try {
+      const restaurantID = req.params.restaurantID;
+  
+      // Fetch reviews based on the provided restaurantID
+      const reviewsSnapshot = await db.collection('dining-reviews')
+        .where('restaurantID', '==', restaurantID)
+        .get();
+  
+      if (reviewsSnapshot.empty) {
+        return res.status(404).json({ error: 'No reviews found for this restaurant.' });
+      }
+  
+      let totalRating = 0;
+      let totalReviews = 0;
+  
+      reviewsSnapshot.forEach(doc => {
+        const reviewData = doc.data();
+        totalRating += parseFloat(reviewData.rating);
+        console.log(totalRating)
+        totalReviews++;
+      });
+      console.log("TOTAL: ", totalReviews)
+      // Calculate the average rating
+      let averageRating = totalRating / totalReviews;
+      // Round the average rating to the nearest tenth
+      averageRating = Math.round(averageRating * 10) / 10;
+      console.log("average: ", averageRating)
+      return res.status(200).json({ averageRating });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send(error);
+    }
+  });
+
+
+  app.get('/api/search/:id', async (req, res) => {
+    try {
+        const restaurantId = req.params.id;
+        const doc = await db.collection('dining-halls').doc(restaurantId).get();
+
+        if (!doc.exists) {
+            res.status(404).send('Restaurant not found');
+            return;
+        }
+
+        const restaurantName = doc.data().name;
+        res.status(200).send({ name: restaurantName });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+    });
 
 
 

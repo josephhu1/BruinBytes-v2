@@ -20,7 +20,7 @@ For each search result
 const SomeResult = ({result}) => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/reviews/${result.name.replace(/\s/g, '')}`);
+        navigate(`/reviews/${result.id}`);
         /* alert(`Need to implement page for: ${result.name}`); */
     };
 

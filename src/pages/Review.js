@@ -1,130 +1,88 @@
-import React, { useState } from 'react';
-/* import ReactDOM from 'react-dom'; */
-/* import logo from './logo.svg'; */
-/* import './App.css'; */
+import React, { useState, useEffect } from 'react';
+import {StarRating} from '../components/StarRating'
+import { Reviews } from '../components/Reviews'
+import { AddReview } from '../components/AddReview'
+import { useParams } from 'react-router-dom';
+
+
 import './styles.css';
-import SubmitReview from '../components/SubmitReview';
 
-
-import { AiFillStar, AiOutlineStar} from "react-icons/ai";
-
-function Review() {
-  const [number, setNumber] = useState(0);
-
-  const [name, setName] = useState('');
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
+function Review( ) {
+  const { id } = useParams()
+  const [reviewsData, setReviewsData] = useState([]);
+  const [restaurantName, setRestaurantName] = useState("")
+  const [newReview, setNewReview] = useState(false)
+  const [averageRating, setAverageRating] = useState(0)
 
   
+  useEffect(() => {
+    fetchReviews(id)
+    fetchAverageRating(id)
+    fetchName(id)
+  }, [id, newReview]);
 
-  const handleText = () => {
-    switch(number){
-      case 0:
-        return 'Evaluate';
-      case 1:
-        return 'Dissatisfaction';
-      case 2:
-        return 'Not fine';
-      
-      case 3:
-        return 'Fine';
+  async function fetchName(restaurantID) {
+    try {
+        const response = await fetch(`http://127.0.0.1:5001/ucla-dining-crud-api/us-central1/app/api/search/${id}`);
+        if (response.ok) {
+            const data = await response.json();
+            console.log("Name: ", data)
+            setRestaurantName(data); // Update the state with restaurant 
+        } else {
+            throw new Error('Failed to fetch');
+        }
+    } catch (error) {
+        console.error(error);
+        // Handle error or set default info
+        setReviewsData(null);
+    }
+}
+  async function fetchReviews(restaurantID) {
+      try {
+          const response = await fetch(`http://127.0.0.1:5001/ucla-dining-crud-api/us-central1/app/api/read/reviews/${id}`);
+          if (response.ok) {
+              const data = await response.json();
+              setReviewsData(data); // Update the state with restaurant 
+          } else {
+              throw new Error('Failed to fetch');
+          }
+      } catch (error) {
+          console.error(error);
+          // Handle error or set default info
+          setReviewsData(null);
+      }
+  }
 
-      case 4:
-        return 'Good';
-
-      case 5:
-        return 'Excellent';
-
-      default:
-        return 'Evaluate';
-
+  async function fetchAverageRating(id) {
+    console.log(id)
+    try {
+      const response = await fetch(`http://127.0.0.1:5001/ucla-dining-crud-api/us-central1/app/api/read/rating/${id}`); // Replace YOUR_BACKEND_URL with your actual backend URL
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data)
+        setAverageRating(data.averageRating);
+      } else {
+        throw new Error('Failed to fetch average rating');
+      }
+    } catch (error) {
+      console.error(error);
+      setAverageRating(0); // Set default rating if there's an error
     }
   }
 
-
-  return (
-    <div className="App">
-      <div className="popup">
-        <h1 style={{ color: 'orange' }}>Restaurant Detail</h1>
-
-      
-        
-        <div className="content">
-          <div className="product">
-              
-              { <img src={"https://www.google.com/url?sa=i&url=https%3A%2F%2Fconferences.ucla.edu%2Fa-history-of-ucla-logos%2F&psig=AOvVaw0GXoJSRQS5hBb8Xh6-NqDU&ust=1701045073967000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCKjP4ey04IIDFQAAAAAdAAAAABAE"} alt="Logo"/> }
-              <div className="restaurant-container">
-                <div className="restaurant-box">
-                  <h2>Restaurant Name1</h2>
-                 <p>Name: Ryan - Rating: 5</p>
-                 <p>Comment: Excellent Restaurant</p>
-
-                </div>
-
-                <div className="restaurant-box">
-                  <h2>Restaurant Name2</h2>
-                  <p>Name: Sam - Rating: 3</p>
-                  <p>Comment: Cheap but not good</p>
-
-                </div>
-                <div className="restaurant-box">
-                  <h2>Restaurant Name3</h2>
-                  <p>Name: Mel - Rating: 2</p>
-                  <p>Comment: Not clean</p>
-
-                </div>  
-              </div>
-          </div>
-
-          
+  return(
+    <div>
+      <h1 className="text-center display-1">{restaurantName.name}</h1>
+      <div className="text-center"> {/* Container for centering */}
+      <StarRating rating={averageRating} />
+      <span className="text-warning ml-1">{averageRating}</span>
       </div>
-
-        <div>
-          <h1>{handleText()}</h1>
-          {Array(5).fill().map((_,index)=>
-            number >= index +1 ?(
-
-            <AiFillStar style = {{color:'orange' }} 
-            onClick={()=>setNumber(index+1) }/>
-            
-
-            ): (
-
-            <AiOutlineStar style={{color:'orange'}} 
-            onClick={()=>setNumber(index+1) }/>
-            )
-          
-
-          )}
-
-          
-          
-          
-        </div>
-
-        <div>
-
-        <input 
-            type="text"
-            value={name}
-            onChange={handleNameChange}
-            placeholder="Enter your name"
-          /> 
-
-        </div>
-
-        <textarea placeholder="Enter Comment..."> </textarea>
-
-        
-        <button>Submit</button>
-        {/*<SubmitReview />*/}
-
-      </div>
-      
+      <div className="mt-3">
+      <Reviews reviews={reviewsData}/>
+      </div> 
+      <AddReview restaurantID={id} newReview={newReview} setNewReview={setNewReview} /> 
     </div>
-  );
+  )
 }
 
 export default Review;
