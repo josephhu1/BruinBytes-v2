@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../pages/design.css';
+import '../pages/styles.css';
 
 const SignUpButton = ({ history }) => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 /* import '../design.css'; */
-import '../pages/design.css';
+import '../pages/styles.css';
 
 const SignInButton = ({ history }) => {
     const navigate = useNavigate();

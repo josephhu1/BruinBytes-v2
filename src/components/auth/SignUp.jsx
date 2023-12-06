@@ -19,15 +19,18 @@ const SignUp  = () => {
     };
 
     return (
-        <div className="sign-in-container">
-            <form onSubmit={signUp}>
-                <h1>Sign Up</h1>
+    <div className="SignUpPage">
+        <div className="auth-form-container">
+            <h2>Sign Up</h2>
+            <form className="register-form" onSubmit={signUp}>
+            <label htmlFor="email">email</label>
                 <input 
                     type="email" 
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 ></input>
+            <label htmlFor="password">password</label>
                 <input
                     type="password"
                     placeholder="Enter your password"
@@ -37,6 +40,7 @@ const SignUp  = () => {
                 <button type="submit">Sign Up</button>
             </form>
         </div>
+    </div>
     );
 };
 
