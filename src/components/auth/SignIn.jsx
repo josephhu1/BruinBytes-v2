@@ -17,12 +17,9 @@ const SignIn = () => {
             .then((userCredential) => {
                 toast.success("Success! Redirecting to homepage...");
                 setTimeout(() => navigate("/"), 2000);
-                //console.log(userCredential);
-                //navigate("/");
             })
             .catch((error) => {
                 toast.error("Login failed. Please try again.");
-                //console.log(error);
             });
     };
     const navigateToSignUp = () => {
@@ -30,6 +27,7 @@ const SignIn = () => {
     }
     return (
         <div className="LoginPage">
+            <ToastContainer />
             <div className="auth-form-container">
                 <h2>Log In</h2>
                 <form className="login-form" onSubmit={signIn}>
