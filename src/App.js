@@ -4,13 +4,9 @@ import Home from './pages/Home';
 import Review from './pages/Review';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
-import AuthDetails from './components/AuthDetails';
 import { AuthProvider } from './components/AuthContext';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import SpinTheWheel from './pages/SpinTheWheel';
-import { onAuthStateChanged } from 'firebase/auth';
 function App() {
   return (
     <AuthProvider>
