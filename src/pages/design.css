@@ -23,10 +23,11 @@ For Home Page:
 
 .sign-in-button {
     margin-right: 16px;
-    /* padding: 16px; */ 
+    display: flex;
 }
-.sign-up-button {
-    margin-right: 16px;
+.sign-out-button {
+    margin-right: 20px;
+    display: flex;
 }
 .search-input {
     width: 65%;
@@ -36,7 +37,7 @@ For Home Page:
     padding: 16px;
 }
 
-.sign-in-text {
+.sign-out-text {
     background-color: #2D68C4;
     color: #fff;
     border: none;
@@ -44,15 +45,8 @@ For Home Page:
     cursor: pointer;
     padding: 10px 20px;
     white-space: nowrap;
-}
-.sign-up-text {
-    background-color: #2D68C4;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    padding: 10px 20px;
-    white-space: nowrap;
+    margin-right: 20px;
+
 }
 .logo {
     color: #2D68C4;

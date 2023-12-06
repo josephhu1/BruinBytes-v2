@@ -14,11 +14,11 @@ const SignInButton = ({ history }) => {
         <div className="sign-in-button">
             {currentUser ? (
                 <>
-                    <span className="sign-up-text">Hi,{currentUser.displayName}!</span>
-                    <button className="sign-up-text" onClick={userSignOut}>Sign Out</button>
+                    <button className="sign-out-text">Hi, {currentUser.displayName}!</button>
+                    <button className="sign-out-text" onClick={userSignOut}>Sign Out</button>
                 </>
             ) : (
-                <button className="sign-in-text" onClick={handleSignInClick}>
+                <button className="sign-out-text" onClick={handleSignInClick}>
                     Sign In
                 </button>
             )}

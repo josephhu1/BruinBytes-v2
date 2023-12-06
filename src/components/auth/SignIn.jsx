@@ -48,7 +48,7 @@ const SignIn = () => {
                     <button type="submit">Log In</button>
                 </form>
                 <button onClick={navigateToSignUp} className="signup-link">
-                    Don't Have an Account? Create one!
+                    Don't have an account? Create one!
                 </button>
             </div>
 
