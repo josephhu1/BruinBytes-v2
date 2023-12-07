@@ -123,7 +123,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                   <img
                     src="/logo.jpg"
                     alt="L"
-                    style={{ minWidth: '150px', height: 'auto', width: '30%' }}
+                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
                   />
                 </div>
               </div>
