@@ -5,7 +5,8 @@ var serviceAccount = require("./ucla-dining-crud-api-firebase-adminsdk-he5en-56a
 require('dotenv').config();
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)});
+  credential: admin.credential.cert(serviceAccount
+  )});
 
 const express = require('express')
 const app = express()

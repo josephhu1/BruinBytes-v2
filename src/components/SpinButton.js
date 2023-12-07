@@ -10,7 +10,7 @@ const SpinButton = ({ history }) => {
     return (
         <div className="spin-the-wheel-button">
             <button className="spin-the-wheel-text" onClick={handleClick}>
-                Need help choosing a restaurant?
+            Pick My Plate
                 </button>
         </div>
     );

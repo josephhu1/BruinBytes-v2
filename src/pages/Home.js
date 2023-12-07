@@ -13,10 +13,8 @@ import SignInButton from '../components/SignInButton';
 import SearchOutput from '../components/SearchOutput';
 import './design.css';
 import { ImageSlider } from "../components/ImageSlider"
-import SignUpButton from '../components/SignUpButton';
 import SpinTheWheel from '../components/SpinButton';
-/*import SignIn from './components/auth/SignIn'; RESOLVE PATH */
-/*import SignUp from './components/auth/SignUp'; RESOLVE PATH */
+
 
 const IMAGES = [rende, bcafe, epicuria, bplate, drey, study, feast, deneve, cafe1919]
 

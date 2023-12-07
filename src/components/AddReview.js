@@ -1,19 +1,27 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { AuthContext } from './AuthContext'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
+    const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState("")
     const [reviewText, setReviewText] = useState("")    
     const [rating, setRating] = useState("Rating")
 
     const submitReview = async (e) => {
         e.preventDefault();
-        console.log(restaurantID)
-        console.log(name)
-        console.log(rating)
-        console.log(reviewText)
+        if (!currentUser) {
+            toast.error("You must be logged in to post a review.");
+            return;
+        }
+        if (!name.trim() || !rating || rating === "Rating" || !reviewText.trim()) {
+            toast.error("Please fill out all fields before submitting your review.");
+            return;
+        }
+     
         try {
             const response = await fetch(`http://127.0.0.1:5001/ucla-dining-crud-api/us-central1/app/api/create/review/${restaurantID}`, {
                 headers: {
@@ -46,6 +54,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
 
     return (
         <div className="mb-2">
+            <ToastContainer />
             <form action="">
                 <div className="form-row">
                     <div className="form-group col-8">
@@ -89,6 +98,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                 type="submit"
                 onClick={submitReview}
                 className= "btn btn-primary"
+                //disabled={!currentUser}
                 >
                     Submit
                     </button>
