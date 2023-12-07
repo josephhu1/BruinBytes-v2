@@ -1,9 +1,12 @@
 import React from 'react';
 import StarRating from './StarRating';
 
+import "../pages/styles.css"
+
 export const Reviews = ({ reviews }) => {
   return (
-    <div className="row row-cols-3 mb-2" style ={{background: 'linear-gradient(to right, #add8e6, #87cefa)', padding: '20px' }}>
+    <div className="reviews-container">
+    <div className="row row-cols-3" style ={{padding: '100px'}}>
       {reviews && reviews.length > 0 ? (
         reviews.map((review, index) => (
           <div className="col" key={index}>
@@ -21,6 +24,7 @@ export const Reviews = ({ reviews }) => {
       ) : (
         <p>No reviews available</p>
       )}
+    </div>
     </div>
   );
 };

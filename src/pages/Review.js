@@ -71,8 +71,8 @@ function Review( ) {
   }
 
   return(
-    <div>
-      <h1 className="text-center display-1">{restaurantName.name}</h1>
+    <div className="overall-review">
+      <h1 className="text-center display-1" style={{ color: 'white' }}>{restaurantName.name}</h1>
       <div className="text-center"> {/* Container for centering */}
       <StarRating rating={averageRating} />
       <span className="text-warning ml-1">{averageRating}</span>

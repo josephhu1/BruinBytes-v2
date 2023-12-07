@@ -47,7 +47,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                 
 
       return (
-        <div className="container-fluid" style={{ background: 'linear-gradient(to right, #add8e6, #87cefa)'}}>
+        <div className="container-fluid" style={{}}>
                 
           <div className="row justify-content-center align-items-center">
 
