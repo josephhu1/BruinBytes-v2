@@ -110,10 +110,24 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
                     id="Review"
+                    onChange={(e) => setReviewText(e.target.value)}
+                    id="Review"
                     className="form-control"
+                    style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     ></textarea>
                 </div>
+              <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
+                <div
+                  className="d-flex flex-column align-items-center"
+                  style={{ marginBottom: '20px' }}
+                >
+                  <button
+                    type="submit"
+                    onClick={submitReview}
+                    className="btn btn-primary"
+                    style={{ marginBottom: '30px' , backgroundColor: 'orange'}}
+                  >
               <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
                 <div
                   className="d-flex flex-column align-items-center"
@@ -136,7 +150,21 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
               </div>
             </div>
           </form>
+                  </button>
+                  <img
+                    src="/logo.jpg"
+                    alt="L"
+                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
+    </div>
+  );
+};
       </div>
     </div>
   );
