@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8994041a.css",
+    "main.js": "/static/js/main.0d121f6c.js",
+    "static/js/787.60a8b4fc.chunk.js": "/static/js/787.60a8b4fc.chunk.js",
+    "static/media/feast.jpeg": "/static/media/feast.d58636a0fb724148e7c2.jpeg",
+    "static/media/cafe1919.jpg": "/static/media/cafe1919.8c371f9dddffaf17d9ea.jpg",
+    "static/media/de-neve.webp": "/static/media/de-neve.b3e3b280a8a3c3ae7299.webp",
+    "static/media/bcafe.jpg": "/static/media/bcafe.3f2aa1a01124f63b27f4.jpg",
+    "static/media/bplate.jpeg": "/static/media/bplate.c2ae6c5c99fc258ea8b2.jpeg",
+    "static/media/rende.jpg": "/static/media/rende.a126aec4046624b28bf1.jpg",
+    "static/media/the-drey.webp": "/static/media/the-drey.13b5c3a53b281360b9d2.webp",
+    "static/media/epicuria.jpg": "/static/media/epicuria.7cd86f35a9857956fda6.jpg",
+    "static/media/thestudy.webp": "/static/media/thestudy.d8a2a5eb7ee0ab8d49aa.webp",
+    "index.html": "/index.html",
+    "main.8994041a.css.map": "/static/css/main.8994041a.css.map",
+    "main.0d121f6c.js.map": "/static/js/main.0d121f6c.js.map",
+    "787.60a8b4fc.chunk.js.map": "/static/js/787.60a8b4fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8994041a.css",
+    "static/js/main.0d121f6c.js"
+  ]
+}

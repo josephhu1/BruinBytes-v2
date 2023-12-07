@@ -52,59 +52,94 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
     };
 
 
-    return (
-        <div className="mb-2">
-            <ToastContainer />
-            <form action="">
-                <div className="form-row">
-                    <div className="form-group col-8">
-                        <label htmlFor="name">Name</label>
-                        <input 
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                        id="name" 
-                        placeholder="name" 
-                        type="text" 
-                        className="form-control"
-                        />
-                    </div>
-                    <div className = "form-group col-4">
-                        <label htmlFor="rating">Rating</label>
-                        <select
-                        value={rating}
-                        onChange={e => setRating(e.target.value)}
-                        id="rating" 
-                        className="custom-select"
-                        >
-                            <option disabled>Rating</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="Review">Review</label>
-                    <textarea 
-                    value={reviewText}
-                    onChange={e => setReviewText(e.target.value)}
-                    id="Review" 
+            
+      return (
+        <div className="container-fluid" style={{}}>
+            <ToastContainer/>
+          <div className="row justify-content-center align-items-center">
+
+                
+            <div className="col-md-1">
+              <form>
+              
+                <div className="form-row align-items-center justify-content-center">
+                <div className="form-group col-md-6 d-flex flex-column align-items-center">
+                    <label
+                    htmlFor="name"
+                    className="d-block text-center mb-3 fancy-label"
+                    style={{ fontFamily: 'sans-serif', fontSize: '20px' , textShadow: '2px 2px 2px #888', fontWeight: 'bold' }}
+                    >
+                    Name
+                    </label>
+                    <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    id="name"
+                    placeholder="name"
+                    type="text"
                     className="form-control"
+                    style={{ border: '3px solid orange', fontFamily: 'sans-serif', marginBottom: '30px', width: '100%', minWidth: '150px' }}
+                    />
+                </div>
+                <div className="form-group col-md-6 d-flex flex-column align-items-center">
+                    <label htmlFor="rating" style = {{marginBottom: '20px', fontSize: '20px', fontFamily: 'Sans-Serif', textShadow: '2px 2px 2px #888', fontWeight: 'bold'}}>Rating</label>
+                    <select
+                    value={rating}
+                    onChange={(e) => setRating(e.target.value)}
+                    id="rating"
+                    className="custom-select"
+                    style={{ marginBottom: '20px' , backgroundColor: '#f5f5f5', border: '1px solid #ccc', borderRadius: '5px', padding: '8px', fontSize: '16px',minWidth: '150px' }}
+                    >
+                    <option disabled>Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    </select>
+                </div>
+                <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
+                    <label
+                    htmlFor="Review"
+                    className="d-block text-center mb-1"
+                    style={{ fontFamily: 'sans-serif', fontSize: '20px' , textShadow: '2px 2px 2px #888', fontWeight: 'bold' }}
+                    >
+                    Review
+                    </label>
+                    <textarea
+                    value={reviewText}
+                    onChange={(e) => setReviewText(e.target.value)}
+                    id="Review"
+                    className="form-control"
+                    style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     ></textarea>
                 </div>
-                <button
-                type="submit"
-                onClick={submitReview}
-                className= "btn btn-primary"
-                //disabled={!currentUser}
+              <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
+                <div
+                  className="d-flex flex-column align-items-center"
+                  style={{ marginBottom: '20px' }}
                 >
+                  <button
+                    type="submit"
+                    onClick={submitReview}
+                    className="btn btn-primary"
+                    style={{ marginBottom: '30px' , backgroundColor: 'orange'}}
+                  >
                     Submit
-                    </button>
-            </form>
+                  </button>
+                  <img
+                    src="/logo.jpg"
+                    alt="L"
+                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
 export default AddReview
