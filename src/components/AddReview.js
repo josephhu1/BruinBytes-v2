@@ -1,27 +1,19 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useContext, useState } from 'react'
-import { AuthContext } from './AuthContext'; 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
-    const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState("")
     const [reviewText, setReviewText] = useState("")    
     const [rating, setRating] = useState("Rating")
 
     const submitReview = async (e) => {
         e.preventDefault();
-        if (!currentUser) {
-            toast.error("You must be logged in to post a review.");
-            return;
-        }
-        if (!name.trim() || !rating || rating === "Rating" || !reviewText.trim()) {
-            toast.error("Please fill out all fields before submitting your review.");
-            return;
-        }
-     
+        console.log(restaurantID)
+        console.log(name)
+        console.log(rating)
+        console.log(reviewText)
         try {
             const response = await fetch(`http://127.0.0.1:5001/ucla-dining-crud-api/us-central1/app/api/create/review/${restaurantID}`, {
                 headers: {
@@ -52,10 +44,11 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
     };
 
 
-            
+                
+
       return (
         <div className="container-fluid" style={{}}>
-            <ToastContainer/>
+                
           <div className="row justify-content-center align-items-center">
 
                 
@@ -110,24 +103,10 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
                     id="Review"
-                    onChange={(e) => setReviewText(e.target.value)}
-                    id="Review"
                     className="form-control"
-                    style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     ></textarea>
                 </div>
-              <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
-                <div
-                  className="d-flex flex-column align-items-center"
-                  style={{ marginBottom: '20px' }}
-                >
-                  <button
-                    type="submit"
-                    onClick={submitReview}
-                    className="btn btn-primary"
-                    style={{ marginBottom: '30px' , backgroundColor: 'orange'}}
-                  >
               <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
                 <div
                   className="d-flex flex-column align-items-center"
@@ -150,21 +129,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
               </div>
             </div>
           </form>
-                  </button>
-                  <img
-                    src="/logo.jpg"
-                    alt="L"
-                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
-                  />
-                </div>
-              </div>
-            </div>
-          </form>
         </div>
-      </div>
-    </div>
-  );
-};
       </div>
     </div>
   );
