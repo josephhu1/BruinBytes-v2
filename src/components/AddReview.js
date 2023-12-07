@@ -47,7 +47,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                 
 
       return (
-        <div className="container-fluid" style={{ background: 'linear-gradient(to right, #d2b48c, #deb887)'}}>
+        <div className="container-fluid" style={{ background: 'linear-gradient(to right, #add8e6, #87cefa)'}}>
                 
           <div className="row justify-content-center align-items-center">
 
@@ -59,8 +59,8 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                 <div className="form-group col-md-6 d-flex flex-column align-items-center">
                     <label
                     htmlFor="name"
-                    className="d-block text-center mb-3"
-                    style={{ fontFamily: 'Sans-Serif', fontSize: '20px' }}
+                    className="d-block text-center mb-3 fancy-label"
+                    style={{ fontFamily: 'sans-serif', fontSize: '20px' , textShadow: '2px 2px 2px #888', fontWeight: 'bold' }}
                     >
                     Name
                     </label>
@@ -75,7 +75,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     />
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column align-items-center">
-                    <label htmlFor="rating" style = {{marginBottom: '20px', fontSize: '20px', fontFamily: 'Sans-Serif'}}>Rating</label>
+                    <label htmlFor="rating" style = {{marginBottom: '20px', fontSize: '20px', fontFamily: 'Sans-Serif', textShadow: '2px 2px 2px #888', fontWeight: 'bold'}}>Rating</label>
                     <select
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
@@ -95,7 +95,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     <label
                     htmlFor="Review"
                     className="d-block text-center mb-1"
-                    style={{ fontFamily: 'Sans-Serif', fontSize: '20px' }}
+                    style={{ fontFamily: 'sans-serif', fontSize: '20px' , textShadow: '2px 2px 2px #888', fontWeight: 'bold' }}
                     >
                     Review
                     </label>
@@ -116,14 +116,14 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     type="submit"
                     onClick={submitReview}
                     className="btn btn-primary"
-                    style={{ marginBottom: '30px' }}
+                    style={{ marginBottom: '30px' , backgroundColor: 'orange'}}
                   >
                     Submit
                   </button>
                   <img
                     src="/logo.jpg"
                     alt="L"
-                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '30px' }}
+                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
                   />
                 </div>
               </div>
