@@ -47,7 +47,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                 
 
       return (
-        <div className="container-fluid">
+        <div className="container-fluid" style={{ background: 'linear-gradient(to right, #d2b48c, #deb887)'}}>
                 
           <div className="row justify-content-center align-items-center">
 
@@ -75,7 +75,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                     />
                 </div>
                 <div className="form-group col-md-6 d-flex flex-column align-items-center">
-                    <label htmlFor="rating">Rating</label>
+                    <label htmlFor="rating" style = {{marginBottom: '20px', fontSize: '20px', fontFamily: 'Sans-Serif'}}>Rating</label>
                     <select
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
@@ -123,7 +123,7 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
                   <img
                     src="/logo.jpg"
                     alt="L"
-                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
+                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '30px' }}
                   />
                 </div>
               </div>
