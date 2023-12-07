@@ -1,19 +1,27 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { AuthContext } from './AuthContext'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
+    const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState("")
     const [reviewText, setReviewText] = useState("")    
     const [rating, setRating] = useState("Rating")
 
     const submitReview = async (e) => {
         e.preventDefault();
-        console.log(restaurantID)
-        console.log(name)
-        console.log(rating)
-        console.log(reviewText)
+        if (!currentUser) {
+            toast.error("You must be logged in to post a review.");
+            return;
+        }
+        if (!name.trim() || !rating || rating === "Rating" || !reviewText.trim()) {
+            toast.error("Please fill out all fields before submitting your review.");
+            return;
+        }
+     
         try {
             const response = await fetch(`http://127.0.0.1:5001/ucla-dining-crud-api/us-central1/app/api/create/review/${restaurantID}`, {
                 headers: {
@@ -44,95 +52,58 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
     };
 
 
-                
-
-      return (
-        <div className="container-fluid" style={{}}>
-                
-          <div className="row justify-content-center align-items-center">
-
-                
-            <div className="col-md-1">
-              <form>
-              
-                <div className="form-row align-items-center justify-content-center">
-                <div className="form-group col-md-6 d-flex flex-column align-items-center">
-                    <label
-                    htmlFor="name"
-                    className="d-block text-center mb-3 fancy-label"
-                    style={{ fontFamily: 'sans-serif', fontSize: '20px' , textShadow: '2px 2px 2px #888', fontWeight: 'bold' }}
-                    >
-                    Name
-                    </label>
-                    <input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    id="name"
-                    placeholder="name"
-                    type="text"
-                    className="form-control"
-                    style={{ border: '3px solid orange', fontFamily: 'sans-serif', marginBottom: '30px', width: '100%', minWidth: '150px' }}
-                    />
+    return (
+        <div className="mb-2">
+            <ToastContainer />
+            <form action="">
+                <div className="form-row">
+                    <div className="form-group col-8">
+                        <label htmlFor="name">Name</label>
+                        <input 
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        id="name" 
+                        placeholder="name" 
+                        type="text" 
+                        className="form-control"
+                        />
+                    </div>
+                    <div className = "form-group col-4">
+                        <label htmlFor="rating">Rating</label>
+                        <select
+                        value={rating}
+                        onChange={e => setRating(e.target.value)}
+                        id="rating" 
+                        className="custom-select"
+                        >
+                            <option disabled>Rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
                 </div>
-                <div className="form-group col-md-6 d-flex flex-column align-items-center">
-                    <label htmlFor="rating" style = {{marginBottom: '20px', fontSize: '20px', fontFamily: 'Sans-Serif', textShadow: '2px 2px 2px #888', fontWeight: 'bold'}}>Rating</label>
-                    <select
-                    value={rating}
-                    onChange={(e) => setRating(e.target.value)}
-                    id="rating"
-                    className="custom-select"
-                    style={{ marginBottom: '20px' , backgroundColor: '#f5f5f5', border: '1px solid #ccc', borderRadius: '5px', padding: '8px', fontSize: '16px',minWidth: '150px' }}
-                    >
-                    <option disabled>Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    </select>
-                </div>
-                <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
-                    <label
-                    htmlFor="Review"
-                    className="d-block text-center mb-1"
-                    style={{ fontFamily: 'sans-serif', fontSize: '20px' , textShadow: '2px 2px 2px #888', fontWeight: 'bold' }}
-                    >
-                    Review
-                    </label>
-                    <textarea
+                <div className="form-group">
+                    <label htmlFor="Review">Review</label>
+                    <textarea 
                     value={reviewText}
-                    onChange={(e) => setReviewText(e.target.value)}
-                    id="Review"
+                    onChange={e => setReviewText(e.target.value)}
+                    id="Review" 
                     className="form-control"
-                    style={{ border: '3px solid orange', marginBottom: '20px', width: '100%', minWidth: '1000px' }}
                     ></textarea>
                 </div>
-              <div className="form-group col-md-6 d-flex flex-column align-items-center mt-3">
-                <div
-                  className="d-flex flex-column align-items-center"
-                  style={{ marginBottom: '20px' }}
+                <button
+                type="submit"
+                onClick={submitReview}
+                className= "btn btn-primary"
                 >
-                  <button
-                    type="submit"
-                    onClick={submitReview}
-                    className="btn btn-primary"
-                    style={{ marginBottom: '30px' , backgroundColor: 'orange'}}
-                  >
                     Submit
-                  </button>
-                  <img
-                    src="/logo.jpg"
-                    alt="L"
-                    style={{ minWidth: '150px', height: 'auto', width: '30%', marginLeft: '50px' }}
-                  />
-                </div>
-              </div>
-            </div>
-          </form>
+                    </button>
+            </form>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
 export default AddReview
