@@ -56,6 +56,7 @@ textarea{
   .overall-review {
     /* background-color: #85AAAA */
     background-image: linear-gradient(79deg, #000435, #9F2B68 48%, #BF40BF);
+    min-height: 100vh;
   }
 
   .reviews-container {
