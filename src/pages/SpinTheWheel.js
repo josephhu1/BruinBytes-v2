@@ -33,7 +33,7 @@ function SpinTheWheel() {
     if (!loading) {
         return (
             <div className="wheel-overall">
-                <h1 className="wheel-text">Where will you eat today?</h1>
+                <h1 className="wheel-text"></h1>
                 <WheelComponent
                     segColors={["#F2A900"]}
                     primaryColor="#2774AE"

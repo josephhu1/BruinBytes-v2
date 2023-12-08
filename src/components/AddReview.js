@@ -53,57 +53,79 @@ export const AddReview = ( { restaurantID, newReview, setNewReview } ) => {
 
 
     return (
+        <div className="container d-flex align-items-center justify-content-center mt-3">
         <div className="mb-2">
-            <ToastContainer />
-            <form action="">
-                <div className="form-row">
-                    <div className="form-group col-8">
-                        <label htmlFor="name">Name</label>
-                        <input 
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                        id="name" 
-                        placeholder="name" 
-                        type="text" 
-                        className="form-control"
-                        />
-                    </div>
-                    <div className = "form-group col-4">
-                        <label htmlFor="rating">Rating</label>
-                        <select
-                        value={rating}
-                        onChange={e => setRating(e.target.value)}
-                        id="rating" 
-                        className="custom-select"
-                        >
-                            <option disabled>Rating</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="Review">Review</label>
-                    <textarea 
-                    value={reviewText}
-                    onChange={e => setReviewText(e.target.value)}
-                    id="Review" 
-                    className="form-control"
-                    ></textarea>
-                </div>
-                <button
+          <ToastContainer />
+          <form className="ml-1 text-center">
+            <div className="form-row d-flex align-items-center justify-content-center">
+              <div className="form-group col-5 d-flex flex-column">
+                <label htmlFor="name" style={{ color: 'white' }} className="text-center">
+                  Name
+                </label>
+                <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  id="name"
+                  placeholder="Enter your name..."
+                  type="text"
+                  className="form-control text-center mt-2"
+                  style = {{border: '3px solid black'}}
+                />
+              </div>
+              <div className="form-group col-2 ml-2 d-flex flex-column">
+                <label htmlFor="rating" style={{ color: 'white' }} className="text-center">
+                  Rating
+                </label>
+                <select
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                  id="rating"
+                  className="custom-select ml-4"
+                  style = {{ marginLeft: "20px",  border: '3px solid black'}}
+                >
+                  <option disabled>Rating</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+      
+            <div className="form-group text-center">
+              <label htmlFor="Review" style={{ color: 'white' }}>
+                Review
+              </label>
+              <textarea
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+                id="Review"
+                className="text-center form-control"
+                style={{
+                  border: '3px solid black',
+                  marginBottom: '20px',
+                  width: '100%',
+                  minWidth: '1000px',
+                }}
+                placeholder='Enter your review...'
+              ></textarea>
+            </div>
+      
+            <div className="text-center">
+              <button
                 type="submit"
                 onClick={submitReview}
-                className= "btn btn-primary"
-                >
-                    Submit
-                    </button>
-            </form>
+                className="btn btn-primary btn-md"
+                style={{ width: '200px' }}
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-    )
-}
-
-export default AddReview
+      </div>
+      );
+    };
+    
+    export default AddReview;
