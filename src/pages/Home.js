@@ -1,11 +1,11 @@
 import bcafe from "../ucla-dining-images/bcafe.jpg"
-import bplate from "../ucla-dining-images/bplate.jpeg"
+import bplate from "../ucla-dining-images/bplate_food.jpeg"
 import cafe1919 from "../ucla-dining-images/cafe1919.jpg"
-import deneve from "../ucla-dining-images/de-neve.webp"
+import deneve from "../ucla-dining-images/deneve.jpeg"
 import epicuria from "../ucla-dining-images/epicuria.jpg"
 import feast from "../ucla-dining-images/feast.jpeg"
 import rende from "../ucla-dining-images/rende.jpg"
-import drey from "../ucla-dining-images/the-drey.webp"
+import drey from "../ucla-dining-images/the_drey.webp"
 import study from "../ucla-dining-images/thestudy.webp"
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
