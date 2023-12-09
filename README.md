@@ -56,7 +56,7 @@ If you encounter any common problems or issues, please consult the documentation
 - Shawdi Sani (https://github.com/SHA256wdi)
 - Gabriel Castro (https://github.com/saladpalad)
 - Joseph Hu (https://github.com/josephhu1)
-- Melis Fidansoy (https://github.com/ananymel)
+- Melis Fidansoy (https://github.com/ananymel) (Please check my local branches as well(melis-v2, melis_branch and melis_branch2) also I detailly explained my workflow in report, please refer to that. But I was only able to merge my branch of melis_style into the main branch.)
 
 **License**
 
