@@ -21,6 +21,8 @@ Before you begin, ensure you have met the following requirements:
 - Node.js installed on your system.
 - npm or yarn package manager installed.
 
+Note: For security reasons, the **.env** file is not included in this repository. Contact Joseph Hu for the necessary information and setup instructions.
+
 **Installing**
 
 To set up BruinBytes, follow these steps:
@@ -34,10 +36,11 @@ To set up BruinBytes, follow these steps:
    yarn install
 
 3. Install additional dependencies:
-   npm i (if doesnt work, use force)
-   npm install firebase
-   npm install react-toastify
-   npm install bootstrap
+   npm i (if doesnt work, use force)\
+   npm install firebase\
+   npm install react-toastify\
+   npm install bootstrap\
+   npm install firebase-functions
 
 **Executing Program**
 
